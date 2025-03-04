@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-03-04T09:46:00.749102" rpa="false" schemaversion="5">
+<suite id="s1" name="Wizzair" source="c:\_wizzair\Wizzair\wizzair.robot">
+<test id="s1-t1" name="Collect Countries And Prices" line="9">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-04T09:46:01.276055" level="INFO">Opening browser 'Chrome' to base url 'https://wizzair.esky.hu/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-04T09:46:01.275135" elapsed="9.075963"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-03-04T09:46:10.352531" elapsed="0.084707"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-04T09:46:13.438813" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-04T09:46:10.437916" elapsed="3.001195"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-04T09:46:13.464253" level="INFO">${elements} = []</msg>
+<var>${elements}</var>
+<arg>//div[contains(@class, 'destination-list')]//a</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-04T09:46:13.439887" elapsed="0.024646"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-04T09:46:13.480763" level="INFO">${price_elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="7e9f06077ca28cb677c6e47402799b68", element="f.6EDC1852550BA3EE11CD8E23E02CB956.d.DC27E028497E5952A7CB2F0603E85053.e.156")&gt;, &lt;selenium.webdri...</msg>
+<var>${price_elements}</var>
+<arg>//div[contains(@class, 'price')]//span</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-04T09:46:13.465257" elapsed="0.015727"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-03-04T09:46:13.481897" level="INFO">Length is 0.</msg>
+<msg time="2025-03-04T09:46:13.482164" level="INFO">${element_count} = 0</msg>
+<var>${element_count}</var>
+<arg>${elements}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-03-04T09:46:13.481529" elapsed="0.000756"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-03-04T09:46:13.483222" level="INFO">Length is 24.</msg>
+<msg time="2025-03-04T09:46:13.483409" level="INFO">${price_count} = 24</msg>
+<var>${price_count}</var>
+<arg>${price_elements}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-03-04T09:46:13.482954" elapsed="0.000576"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<var>${country}</var>
+<arg>${elements}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-04T09:46:13.484578" elapsed="0.000143"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<var>${price}</var>
+<arg>${index} &lt; ${price_count}</arg>
+<arg>Get Text</arg>
+<arg>${price_elements}[${index}]</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>N/A</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-03-04T09:46:13.484966" elapsed="0.000168"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${country}: ${price}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-04T09:46:13.485411" elapsed="0.000160"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${country}: ${price}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-03-04T09:46:13.485842" elapsed="0.000144"/>
+</kw>
+<var name="${index}"/>
+<status status="NOT RUN" start="2025-03-04T09:46:13.484322" elapsed="0.001780"/>
+</iter>
+<var>${index}</var>
+<value>${element_count}</value>
+<status status="NOT RUN" start="2025-03-04T09:46:13.483916" elapsed="0.002320"/>
+</for>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-03-04T09:46:13.486933" elapsed="2.255861"/>
+</kw>
+<doc>Ez a teszteset összegyűjti és azonnal kiírja az ország-ár párokat a Wizz Air eSky oldaláról</doc>
+<status status="PASS" start="2025-03-04T09:46:01.273322" elapsed="14.470527"/>
+</test>
+<status status="PASS" start="2025-03-04T09:46:00.757522" elapsed="14.988686"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Wizzair" id="s1" pass="1" fail="0" skip="0">Wizzair</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-03-03T10:29:20.670649" rpa="false" schemaversion="5">
+<suite id="s1" name="Wizzair" source="C:\_wizzair\Wizzair">
+<suite id="s1-s1" name="Wizzair" source="C:\_wizzair\Wizzair\wizzair.robot">
+<test id="s1-s1-t1" name="List Departing Flights and Prices" line="5">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-03T10:29:21.085927" level="INFO">Opening browser 'Chrome' to base url 'https://wizzair.com'.</msg>
+<arg>https://wizzair.com</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-03T10:29:21.084633" elapsed="3.157657"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-03-03T10:29:24.243043" elapsed="0.109101"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2025-03-03T10:29:24.360225" level="FAIL">Variable '${DEPARTURE_SECTION}' not found.</msg>
+<arg>${DEPARTURE_SECTION}</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-03-03T10:29:24.357726" elapsed="0.004021">Variable '${DEPARTURE_SECTION}' not found.</status>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<var>${countries}</var>
+<arg>${COUNTRY_ELEMENT}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-03T10:29:24.364050" elapsed="0.000922"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<var>${prices}</var>
+<arg>${PRICE_ELEMENT}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-03T10:29:24.374134" elapsed="0.002283"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>${countries.__len__()} == ${prices.__len__()}</arg>
+<arg>Log Flight Data</arg>
+<arg>${countries}</arg>
+<arg>${prices}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-03-03T10:29:24.383168" elapsed="0.000864"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-03-03T10:29:24.390812" elapsed="0.000438"/>
+</kw>
+<status status="FAIL" start="2025-03-03T10:29:21.082377" elapsed="3.309681">Variable '${DEPARTURE_SECTION}' not found.</status>
+</test>
+<status status="FAIL" start="2025-03-03T10:29:20.699359" elapsed="3.704450"/>
+</suite>
+<status status="FAIL" start="2025-03-03T10:29:20.674778" elapsed="3.736692"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Wizzair" id="s1" pass="0" fail="1" skip="0">Wizzair</stat>
+<stat name="Wizzair" id="s1-s1" pass="0" fail="1" skip="0">Wizzair.Wizzair</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
