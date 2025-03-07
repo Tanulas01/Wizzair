@@ -1,98 +1,379 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-03-04T09:46:00.749102" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-03-07T09:30:40.703753" rpa="false" schemaversion="5">
 <suite id="s1" name="Wizzair" source="c:\_wizzair\Wizzair\wizzair.robot">
-<test id="s1-t1" name="Collect Countries And Prices" line="9">
+<test id="s1-t1" name="Collect Arrival Cities And Prices" line="9">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-03-04T09:46:01.276055" level="INFO">Opening browser 'Chrome' to base url 'https://wizzair.esky.hu/'.</msg>
+<msg time="2025-03-07T09:30:41.175434" level="INFO">Opening browser 'Chrome' to base url 'https://wizzair.esky.hu/'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-03-04T09:46:01.275135" elapsed="9.075963"/>
+<status status="PASS" start="2025-03-07T09:30:41.174921" elapsed="4.203407"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-03-04T09:46:10.352531" elapsed="0.084707"/>
+<status status="PASS" start="2025-03-07T09:30:45.379339" elapsed="0.132728"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-03-04T09:46:13.438813" level="INFO">Slept 3 seconds.</msg>
+<msg time="2025-03-07T09:30:48.514769" level="INFO">Slept 3 seconds.</msg>
 <arg>3s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-03-04T09:46:10.437916" elapsed="3.001195"/>
+<status status="PASS" start="2025-03-07T09:30:45.513546" elapsed="3.001554"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2025-03-04T09:46:13.464253" level="INFO">${elements} = []</msg>
-<var>${elements}</var>
-<arg>//div[contains(@class, 'destination-list')]//a</arg>
+<msg time="2025-03-07T09:30:48.821590" level="INFO">${arrival_cities} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="b10123830b08c5bed12a88db04d56f80", element="f.B2B7D14FCD1EC2F33B70BD9390C4E0C3.d.074D5B3DA687399EE408A6E3ACE23813.e.163")&gt;, &lt;selenium.webdri...</msg>
+<var>${arrival_cities}</var>
+<arg>//div[contains(@class, 'arrival-city')]</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2025-03-04T09:46:13.439887" elapsed="0.024646"/>
+<status status="PASS" start="2025-03-07T09:30:48.515714" elapsed="0.306205"/>
 </kw>
 <kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2025-03-04T09:46:13.480763" level="INFO">${price_elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="7e9f06077ca28cb677c6e47402799b68", element="f.6EDC1852550BA3EE11CD8E23E02CB956.d.DC27E028497E5952A7CB2F0603E85053.e.156")&gt;, &lt;selenium.webdri...</msg>
-<var>${price_elements}</var>
-<arg>//div[contains(@class, 'price')]//span</arg>
+<msg time="2025-03-07T09:30:48.860309" level="INFO">${prices} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="b10123830b08c5bed12a88db04d56f80", element="f.B2B7D14FCD1EC2F33B70BD9390C4E0C3.d.074D5B3DA687399EE408A6E3ACE23813.e.171")&gt;, &lt;selenium.webdri...</msg>
+<var>${prices}</var>
+<arg>//span[contains(@class, 'price-amount')]</arg>
 <doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2025-03-04T09:46:13.465257" elapsed="0.015727"/>
+<status status="PASS" start="2025-03-07T09:30:48.822794" elapsed="0.037756"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-03-04T09:46:13.481897" level="INFO">Length is 0.</msg>
-<msg time="2025-03-04T09:46:13.482164" level="INFO">${element_count} = 0</msg>
-<var>${element_count}</var>
-<arg>${elements}</arg>
+<msg time="2025-03-07T09:30:48.861816" level="INFO">Length is 8.</msg>
+<msg time="2025-03-07T09:30:48.862196" level="INFO">${city_count} = 8</msg>
+<var>${city_count}</var>
+<arg>${arrival_cities}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-03-04T09:46:13.481529" elapsed="0.000756"/>
+<status status="PASS" start="2025-03-07T09:30:48.861342" elapsed="0.001220"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-03-04T09:46:13.483222" level="INFO">Length is 24.</msg>
-<msg time="2025-03-04T09:46:13.483409" level="INFO">${price_count} = 24</msg>
+<msg time="2025-03-07T09:30:48.863834" level="INFO">Length is 8.</msg>
+<msg time="2025-03-07T09:30:48.864269" level="INFO">${price_count} = 8</msg>
 <var>${price_count}</var>
-<arg>${price_elements}</arg>
+<arg>${prices}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-03-04T09:46:13.482954" elapsed="0.000576"/>
+<status status="PASS" start="2025-03-07T09:30:48.863292" elapsed="0.001244"/>
 </kw>
 <for flavor="IN RANGE">
 <iter>
 <kw name="Get Text" owner="SeleniumLibrary">
-<var>${country}</var>
-<arg>${elements}[${index}]</arg>
+<msg time="2025-03-07T09:30:48.891295" level="INFO">${city} = Róma</msg>
+<var>${city}</var>
+<arg>${arrival_cities}[${index}]</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-03-04T09:46:13.484578" elapsed="0.000143"/>
+<status status="PASS" start="2025-03-07T09:30:48.866103" elapsed="0.025498"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Get Text" owner="SeleniumLibrary">
+<arg>${prices}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:48.892764" elapsed="0.123452"/>
+</kw>
+<msg time="2025-03-07T09:30:49.016653" level="INFO">${price} = 21346</msg>
 <var>${price}</var>
 <arg>${index} &lt; ${price_count}</arg>
 <arg>Get Text</arg>
-<arg>${price_elements}[${index}]</arg>
+<arg>${prices}[${index}]</arg>
 <arg>ELSE</arg>
 <arg>Set Variable</arg>
 <arg>N/A</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="NOT RUN" start="2025-03-04T09:46:13.484966" elapsed="0.000168"/>
+<status status="PASS" start="2025-03-07T09:30:48.892002" elapsed="0.124943"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<arg>${country}: ${price}</arg>
+<msg time="2025-03-07T09:30:49.017906" level="INFO">Róma: 21346</msg>
+<arg>${city}: ${price}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-03-04T09:46:13.485411" elapsed="0.000160"/>
+<status status="PASS" start="2025-03-07T09:30:49.017393" elapsed="0.000769"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>${country}: ${price}</arg>
+<arg>${city}: ${price}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" start="2025-03-04T09:46:13.485842" elapsed="0.000144"/>
+<status status="PASS" start="2025-03-07T09:30:49.018471" elapsed="0.000758"/>
 </kw>
-<var name="${index}"/>
-<status status="NOT RUN" start="2025-03-04T09:46:13.484322" elapsed="0.001780"/>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-03-07T09:30:48.865824" elapsed="0.153648"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-07T09:30:49.068427" level="INFO">${city} = Bari</msg>
+<var>${city}</var>
+<arg>${arrival_cities}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.020288" elapsed="0.048557"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Get Text" owner="SeleniumLibrary">
+<arg>${prices}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.070349" elapsed="0.040770"/>
+</kw>
+<msg time="2025-03-07T09:30:49.111611" level="INFO">${price} = 25153</msg>
+<var>${price}</var>
+<arg>${index} &lt; ${price_count}</arg>
+<arg>Get Text</arg>
+<arg>${prices}[${index}]</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>N/A</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.069305" elapsed="0.042583"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-07T09:30:49.113252" level="INFO">Bari: 25153</msg>
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.112367" elapsed="0.001544"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.114342" elapsed="0.000968"/>
+</kw>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-03-07T09:30:49.019935" elapsed="0.095643"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-07T09:30:49.214867" level="INFO">${city} = Larnaca</msg>
+<var>${city}</var>
+<arg>${arrival_cities}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.116461" elapsed="0.098747"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Get Text" owner="SeleniumLibrary">
+<arg>${prices}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.216368" elapsed="0.012460"/>
+</kw>
+<msg time="2025-03-07T09:30:49.229377" level="INFO">${price} = 32548</msg>
+<var>${price}</var>
+<arg>${index} &lt; ${price_count}</arg>
+<arg>Get Text</arg>
+<arg>${prices}[${index}]</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>N/A</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.215645" elapsed="0.014000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-07T09:30:49.230584" level="INFO">Larnaca: 32548</msg>
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.230075" elapsed="0.000773"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.231187" elapsed="0.000718"/>
+</kw>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-03-07T09:30:49.116038" elapsed="0.116143"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-07T09:30:49.268586" level="INFO">${city} = London</msg>
+<var>${city}</var>
+<arg>${arrival_cities}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.233043" elapsed="0.036248"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Get Text" owner="SeleniumLibrary">
+<arg>${prices}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.270540" elapsed="0.014839"/>
+</kw>
+<msg time="2025-03-07T09:30:49.285827" level="INFO">${price} = 23105</msg>
+<var>${price}</var>
+<arg>${index} &lt; ${price_count}</arg>
+<arg>Get Text</arg>
+<arg>${prices}[${index}]</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>N/A</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.269760" elapsed="0.016322"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-07T09:30:49.287079" level="INFO">London: 23105</msg>
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.286497" elapsed="0.000904"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.287768" elapsed="0.000800"/>
+</kw>
+<var name="${index}">3</var>
+<status status="PASS" start="2025-03-07T09:30:49.232631" elapsed="0.056167"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-07T09:30:49.303915" level="INFO">${city} = Catania, Szicília</msg>
+<var>${city}</var>
+<arg>${arrival_cities}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.289573" elapsed="0.014680"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Get Text" owner="SeleniumLibrary">
+<arg>${prices}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.305466" elapsed="0.013913"/>
+</kw>
+<msg time="2025-03-07T09:30:49.319881" level="INFO">${price} = 27742</msg>
+<var>${price}</var>
+<arg>${index} &lt; ${price_count}</arg>
+<arg>Get Text</arg>
+<arg>${prices}[${index}]</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>N/A</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.304689" elapsed="0.015484"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-07T09:30:49.321914" level="INFO">Catania, Szicília: 27742</msg>
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.321118" elapsed="0.001107"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.322579" elapsed="0.000902"/>
+</kw>
+<var name="${index}">4</var>
+<status status="PASS" start="2025-03-07T09:30:49.289193" elapsed="0.034515"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-07T09:30:49.362831" level="INFO">${city} = Rodosz</msg>
+<var>${city}</var>
+<arg>${arrival_cities}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.324447" elapsed="0.038728"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Get Text" owner="SeleniumLibrary">
+<arg>${prices}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.364569" elapsed="0.016826"/>
+</kw>
+<msg time="2025-03-07T09:30:49.381910" level="INFO">${price} = 61402</msg>
+<var>${price}</var>
+<arg>${index} &lt; ${price_count}</arg>
+<arg>Get Text</arg>
+<arg>${prices}[${index}]</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>N/A</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.363634" elapsed="0.018615"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-07T09:30:49.383290" level="INFO">Rodosz: 61402</msg>
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.382731" elapsed="0.000946"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.384040" elapsed="0.000829"/>
+</kw>
+<var name="${index}">5</var>
+<status status="PASS" start="2025-03-07T09:30:49.324109" elapsed="0.060997"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-07T09:30:49.403907" level="INFO">${city} = Malta</msg>
+<var>${city}</var>
+<arg>${arrival_cities}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.385981" elapsed="0.018551"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Get Text" owner="SeleniumLibrary">
+<arg>${prices}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.406193" elapsed="0.046943"/>
+</kw>
+<msg time="2025-03-07T09:30:49.453532" level="INFO">${price} = 27453</msg>
+<var>${price}</var>
+<arg>${index} &lt; ${price_count}</arg>
+<arg>Get Text</arg>
+<arg>${prices}[${index}]</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>N/A</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.405167" elapsed="0.048584"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-07T09:30:49.455108" level="INFO">Malta: 27453</msg>
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.454636" elapsed="0.001232"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.456197" elapsed="0.000726"/>
+</kw>
+<var name="${index}">6</var>
+<status status="PASS" start="2025-03-07T09:30:49.385520" elapsed="0.071654"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-07T09:30:49.513621" level="INFO">${city} = Athén</msg>
+<var>${city}</var>
+<arg>${arrival_cities}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.458794" elapsed="0.055194"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Get Text" owner="SeleniumLibrary">
+<arg>${prices}[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.515209" elapsed="0.030848"/>
+</kw>
+<msg time="2025-03-07T09:30:49.546489" level="INFO">${price} = 27453</msg>
+<var>${price}</var>
+<arg>${index} &lt; ${price_count}</arg>
+<arg>Get Text</arg>
+<arg>${prices}[${index}]</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>N/A</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.514441" elapsed="0.032265"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-07T09:30:49.547607" level="INFO">Athén: 27453</msg>
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.547113" elapsed="0.000766"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${city}: ${price}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-07T09:30:49.548218" elapsed="0.001100"/>
+</kw>
+<var name="${index}">7</var>
+<status status="PASS" start="2025-03-07T09:30:49.458065" elapsed="0.091508"/>
 </iter>
 <var>${index}</var>
-<value>${element_count}</value>
-<status status="NOT RUN" start="2025-03-04T09:46:13.483916" elapsed="0.002320"/>
+<value>${city_count}</value>
+<status status="PASS" start="2025-03-07T09:30:48.865275" elapsed="0.684718"/>
 </for>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-03-04T09:46:13.486933" elapsed="2.255861"/>
+<status status="PASS" start="2025-03-07T09:30:49.550815" elapsed="2.402122"/>
 </kw>
-<doc>Ez a teszteset összegyűjti és azonnal kiírja az ország-ár párokat a Wizz Air eSky oldaláról</doc>
-<status status="PASS" start="2025-03-04T09:46:01.273322" elapsed="14.470527"/>
+<doc>Ez a teszteset összegyűjti és azonnal kiírja az érkezési városokat és az árakat a Wizz Air eSky oldaláról</doc>
+<status status="PASS" start="2025-03-07T09:30:41.173373" elapsed="10.780644"/>
 </test>
-<status status="PASS" start="2025-03-04T09:46:00.757522" elapsed="14.988686"/>
+<status status="PASS" start="2025-03-07T09:30:40.710557" elapsed="11.245614"/>
 </suite>
 <statistics>
 <total>
