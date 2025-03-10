@@ -11,6 +11,10 @@ Collect Arrival Cities And Prices
     Open Browser    ${URL}    ${BROWSER}
     Maximize Browser Window
     Sleep    3s
+    ${shadowHost} =    Get WebElement  xpath=//div[@id='usercentrics-root']
+    ${shadowRoot} =    Execute JavaScript    return arguments[0].shadowRoot;  Get Text  ${shadowHost}
+    ${button} =    Execute JavaScript    return arguments[0].querySelector("#shadow-btn");
+    Click Element    ${button}
     
     ${arrival_cities}    Get WebElements    //div[contains(@class, 'arrival-city')]
     ${prices}    Get WebElements    //span[contains(@class, 'price-amount')]
@@ -22,7 +26,8 @@ Collect Arrival Cities And Prices
         ${city}    Get Text    ${arrival_cities}[${index}]
         ${price}    Run Keyword If    ${index} < ${price_count}    Get Text    ${prices}[${index}]    ELSE    Set Variable    N/A
         Log    ${city}: ${price}
-        Log To Console    ${city}: ${price}
+        Log To Console    ${index}. ${city}: ${price}
+
     END
     
     Close Browser
